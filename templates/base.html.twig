@@ -2,15 +2,151 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
-
-        {% block javascripts %}
-        {% endblock %}
+        <title>{% block title %}Le Quai Antique{% endblock %}</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
-    <body>
-        {% block body %}{% endblock %}
+     <body>
+       <header>
+          <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white" href="/">
+                <img src="logo/logoimage.webp" alt="Logo" style="max-width: 100px; height: auto;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                 <li class="nav-item">
+                  <a class="nav-link" href="/">ACCUEIL</a>
+                 </li>
+
+                 <li class="nav-item">
+                  <a class="nav-link" href="carte">CARTE & MENUS</a>
+                 </li>
+              </ul>
+
+              <ul class="navbar-nav d-flex justify-content-end">
+
+              {% if app.user %}
+
+                 <li class="nav-item">
+                  <a class="nav-link" >{{ app.user.nom }} {{ app.user.prenom }}</a>
+                 </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="{{ path('app_logout') }}">Deconnexion</a>
+                 </li>
+                  
+              {% else %}
+
+                 <li class="nav-item">
+                  <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+                 </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                 </li>
+
+              {% endif %}
+                
+              </ul>
+            </div>
+           </div>
+          </nav>
+       </header>
+{% block body %}{% endblock %}
+       
+
+       
+
+       
+  
+
+   <section class="footer">
+     <div class="container-fluid">
+       <div class="row">
+       <footer class="bg-dark text-white pt-5 pb-4">
+          <div class="container text-center text-md-left">
+             <div class="row text-center text-md-left">
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                     <h5 class="text-uppercas mb-4 font-weigth-bold text wraning">Nos Horaires d'ouverture</h5>
+                     <ul class="Horaires">
+                            <li>Lundi - 12:00 - 14:00</li>
+                            <li>        19:00 - 20:00</li><br>
+                            <li>Mardi -  12:00 - 14:00</li>
+                            <li>        19:00 - 22:00</li><br>
+                            <li>Mércredi - Fermé</li><br>
+                            <li>jeudi - 12:00 - 14:00</li>
+                            <li>       19:00 - 22:00</li><br>
+                            <li>Vendredi - 12:30 - 14:00</li>
+                            <li>          19:00 - 22:00</li><br>
+                            <li>Samedi - 19:00 - 23:00 </li>
+                            <li>Dimanche - 12:00 - 14:00</li>
+                       </ul>
+                </div>
+
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                      <h5 class="text-uppercas mb-4 font-weigth-bold text wraning">Contact</h5>
+                        <p>
+                          <i class="fas fa-house mr-3"></i> 29420, plouvor, France
+                        </p>
+                        <p>
+                          <i class="fas fa-envelope mr-3"></i> resto24@gmail.com
+                        </p>
+                        <p>
+                          <i class="fas fa-phone mr-3"></i> +330612017496
+                        </p>
+                        <p>
+                          <i class="fas fa-print mr-3"></i> +331247538720
+                       </p>
+                   </div>
+
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                      <h5 class="text-uppercas mb-4 font-weigth-bold text wraning">A propos de Nous</h5>
+                      <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic quam perferendis natus 
+                     esse nihil numquam rerum quis velit a nam porro at voluptatibus debitis expedita omnis,
+                      ad necessitatibus! Aut, optio.</p>
+                    </div>
+
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                       <h5 class="text-uppercas mb-4 font-weigth-bold text wraning">L'actualité du restaurant</h5>
+                       <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic quam perferendis natus 
+                     esse nihil numquam rerum quis velit a nam porro at voluptatibus debitis expedita omnis,
+                      ad necessitatibus! Aut, optio.</p>
+                    </div>
+               </div>
+                    <hr class="mb-4">
+                    <div class="row align-items-center">
+                       <div class="col-md-7 col-lg-8">
+                          <p>Copyright ©2023 All rights reserved by: Frank</p>
+                       </div>
+
+                       <div class="col-md-5 col-lg-4">
+                       <div class="text-center text-md right">
+                         
+                         <ul class="list-unstyled list-inline">
+                           <li class="list-inline-item">
+                             <a href="#" class"btn-floating btn-sm text-white" style="font-size: 23px">
+                             <i class="fab fa-facebook"></i></a>
+                           </li>
+
+                           <li class="list-inline-item">
+                             <a href="#" class"btn-floating btn-sm text-white" style="font-size: 23px">
+                             <i class="fab fa-twitter"></i></a>
+                           </li>
+                        </ul>
+                     </div>
+               </div>
+           </div>
+      </footer>
+     </div>
+    </div>
+   </section>
+  
+
+       <script src="js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
